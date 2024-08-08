@@ -1,0 +1,140 @@
+align=center
+separator=false
+color=#f8f8f2
+separator_block_width=15
+markup=pango
+
+[arch_update]
+command=checkupdates | wc -l
+interval=once
+label=<span color="#f8f8f2">  </span>
+border=#f8f8f2
+border_top=1
+border_right=0
+border_bottom=0
+border_left=0
+
+[mediaplayer]
+command=playerctl metadata --format "{{ artist }} <span color=\"#f8f8f2\">-</span> {{ title }}"
+interval=2
+label=<span color="#f8f8f2">  </span>
+border=#f8f8f2
+border_top=1
+border_right=0
+border_bottom=0
+border_left=0
+
+[wifi]
+command=iwgetid -r | tr '\n' ' ' && grep $(iwgetid -m | awk '{ printf "%s", $1 }') /proc/net/wireless | awk '{ printf "(%i%)\n", int($3 * 100 / 70) }'
+instance=wlp11s0f3u1
+interval=10
+label=<span color="#f8f8f2">  </span>
+border=#f8f8f2
+border_top=1
+border_right=0
+border_bottom=0
+border_left=0
+
+[battery]
+command=~/.config/i3blocks/battery_status.sh
+markup=pango
+interval=10
+border=#f8f8f2
+border_top=1
+border_right=0
+border_bottom=0
+border_left=0
+
+# [ram]
+# command=./ram.sh
+# interval=2
+# label=<span color="#f8f8f2">  </span>
+# border=#f8f8f2
+# border_top=1
+# border_right=0
+# border_bottom=0
+# border_left=0
+
+#[gpu_stats]
+#command=~/.config/i3blocks/gpu_status.sh
+#label=<span color="#f8f8f2"><b>GPU: </b></span>
+#interval=2
+#color=true
+#border_top=1
+#border_right=0
+#border_bottom=0
+#border_left=0
+
+#[cpu_stats]
+#command=~/.config/i3blocks/cpu_status.sh
+#interval=2
+#markup=pango
+#label=<span color="#f8f8f2"><b>CPU: </b></span>
+#border=#f8f8f2
+#border_top=1
+#border_right=0
+#border_bottom=0
+#border_left=0
+
+[volume]
+command=~/.config/i3blocks/volume_status.sh
+signal=10
+interval=30
+color=true
+border_top=1
+border_right=0
+border_bottom=0
+border_left=0
+
+[brightness]
+command=~/.config/i3blocks/brightness_status.sh
+markup=pango
+signal=10
+interval=30
+border=#f8f8f2
+border_top=1
+border_right=0
+border_bottom=0
+border_left=0
+
+[time_est]
+command=TZ=":Europe/Lisbon" date '+%H : %M' | awk '{ printf "%s<span color=\"#ffffff\">%s</span>%s<span color=\"#f8f8f2\">%s</span>\n", $1, $2, $3, $4 }'
+interval=1
+label=<span color="#f8f8f2">  </span>
+border=#f8f8f2
+border_top=1
+border_right=0
+border_bottom=0
+border_left=0
+
+[date]
+command=LC_ALL="pt_PT.UTF-8" date '+%d - %m - %Y '| awk '{ printf "%s<span>%s%s</span>%s<span>%s %s</span>\n", $1, $2, $3, $4, $5, $6 }'
+interval=60
+label=<span color="#f8f8f2">  </span>
+border=#f8f8f2
+border_top=1
+border_right=0
+border_bottom=0
+border_left=0
+
+[power]
+command=~/.config/i3blocks/power_button.sh
+interval=60
+signal=10
+markup=pango
+border=#f8f8f2
+border_top=1
+border_right=0
+border_bottom=0
+border_left=0
+
+#[test]
+#command=echo ""
+#interval=once
+#signal=10
+#markup=pango
+#border=#f8f8f2
+#border_top=1
+#border_right=0
+#border_bottom=0
+#border_left=0
