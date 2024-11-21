@@ -22,9 +22,6 @@ vim.opt.showmode = false
 -- Sync clipboard between OS and Neovim.
 vim.opt.clipboard = 'unnamedplus'
 
--- Enable break indent
-vim.opt.breakindent = true
-
 -- Save undo history
 vim.opt.undofile = true
 
@@ -48,7 +45,7 @@ vim.opt.splitbelow = true
 
 -- Sets how neovim will display certain whitespace characters in the editor.
 vim.opt.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.listchars = { tab = '  ', trail = '·', nbsp = '␣' }
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
@@ -150,7 +147,12 @@ require('lazy').setup({
 })
 
 -- Minimal number of screen lines to keep above and below the cursor.
-vim.opt.scrolloff = 10
+vim.opt.scrolloff = 11
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'json',
+  command = 'set formatprg=jq',
+})
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
